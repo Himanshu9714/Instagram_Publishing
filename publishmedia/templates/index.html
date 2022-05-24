@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.rtl.min.css"
+        integrity="sha384-dc2NSrAXbAkjrdm9IYrX10fQq9SDG6Vjz7nQVKdKcJl3pC+k37e7qJR5MVSCS+wR" crossorigin="anonymous">
+
+    <title>Jay Shree Ram</title>
+</head>
+
+<body>
+
+    <div class="container col-md-3 my-5">
+        <h3 style="color: #ff4400;" class="mb-2">Publish Media to Instagram</h3>
+        <form method="post" enctype=multipart/form-data>
+            <select class="form-select" aria-label="Default select example" id="select" name="select">
+                <option selected><b>Select the option by opening menu</option>
+                <option value="Image Post">Upload an Image as Post</option>
+                <option value="Image Story">Upload an Image as Story</option>
+                <option value="Carousel Object">Upload multiple Images in a Post</option>
+                <option value="Video Post">Upload a Video as Post</option>
+                <option value="IGTV">Upload IGTV</option>
+            </select>
+            {% include 'single_post_form.html' %}
+            {% include 'carousel_obj_form.html' %}
+        </form>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script>
+            $('#select').on('change', function () {
+                if ((this.value == "Image Post") || (this.value == "Image Story") || (this.value == "Video Post") || (this.value == "IGTV")) {
+                    document.getElementsByTagName('label')[0].innerHTML = `Upload ${this.value}`;
+                    document.getElementById("single_post_form").style.display = "block";
+                    document.getElementById("carousel_obj_form").style.display = "none";
+                }
+                else if (this.value == "Carousel Object") {
+                    document.getElementsByTagName('label')[1].innerHTML = `Upload ${this.value}`;
+                    document.getElementById("single_post_form").style.display = "none";
+                    document.getElementById("carousel_obj_form").style.display = "block";
+                }
+                else {
+                    document.getElementById("single_post_form").style.display = "none";
+                    document.getElementById("carousel_obj_form").style.display = "none";
+                }
+            });
+        </script>
+        <!-- Optional JavaScript; choose one of the two! -->
+
+        <!-- Option 1: Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+            crossorigin="anonymous"></script>
+
+        <!-- Option 2: Separate Popper and Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+            integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+            integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+            crossorigin="anonymous"></script>
+
+    </div>
+</body>
+
+</html>
