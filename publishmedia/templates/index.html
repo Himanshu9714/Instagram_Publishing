@@ -16,6 +16,18 @@
 <body>
 
     <div class="container col-md-3 my-5">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class=flashes>
+            {% for message in messages %}
+            <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+                <strong>{{message}}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
         <h3 style="color: #ff4400;" class="mb-2">Publish Media to Instagram</h3>
         <form method="post" enctype=multipart/form-data>
             <select class="form-select" aria-label="Default select example" id="select" name="select">
